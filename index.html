@@ -1,0 +1,1349 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prodromos - Software Engineer</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #66bcea 0%, #0c41f5 100%);
+                color: #333;
+                line-height: 1.6;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem 2rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                transition: all 0.3s ease;
+                text-align: center;
+            }
+
+            nav.scrolled {
+                padding: 0.5rem 2rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            nav ul {
+                list-style: none;
+                justify-content: center;
+                gap: 2rem;
+                display: grid;
+                align-items: center;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+                gap: 1rem;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 600;
+                transition: color 0.3s ease;
+                position: relative;
+            }
+
+            nav a:after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #66bcea;
+                transition: width 0.3s ease;
+            }
+
+            nav a:hover:after {
+                width: 100%;
+            }
+
+            nav a:hover {
+                color: #66bcea;
+            }
+
+            section {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 2rem;
+            }
+
+            .container {
+                max-width: 1200px;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            #hero {
+                margin-top: 2rem;
+                text-align: center;
+                color: white;
+            }
+
+            #hero .hero-content {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 1rem;
+                align-items: flex-start;
+                margin-top: 2rem;
+            }
+   
+            #hero .profile-image-container {
+                width: 300px;
+                height: 300px;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0, 0, .4, 0.5);
+                animation: fadeInUp 1s ease;
+            }
+
+            #hero .profile-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            #hero .hero-text {
+                text-align: left;
+            }
+
+            #hero .hero-text h1 {
+                text-align: left;
+            }
+
+            #hero h1 {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+                animation: fadeInUp 1s ease;
+            }
+
+            #hero p {
+                text-align: left;
+                font-size: 1rem;
+                padding: 1rem 0.5rem 1rem 0.5rem;
+                opacity: 0.85;
+                animation: fadeInUp 2.2s ease 0.4s backwards;
+            }
+
+            #hero .tagline {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+                opacity: 0.9;
+                animation: fadeInUp 1.5s ease 0.2s backwards;
+            }
+
+            #hero .cta-button {
+                display: inline-block;
+                padding: 1rem 2.5rem;
+                background: white;
+                color: #66bcea;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 700;
+                transition: all 0.3s ease;
+                animation: fadeInUp 2.8s ease 0.6s backwards;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            #education .show-creds-button {
+                display: inline-block;
+                padding: 0.2rem 1rem;
+                background: white;
+                color: #66bcea;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 700;
+                transition: all 0.3s ease;
+                animation: fadeInUp 2.8s ease 0.6s backwards;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                margin-top: 1rem;
+            }
+
+            #hero .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            #education .show-creds-button:hover {
+                transform: translateY(3px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .content-section {
+                background: white;
+                border-radius: 20px;
+                padding: 1rem 0.85rem;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                color: #0c41f5;
+                text-align: center;
+            }
+
+            .about-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+
+            .about-text p {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+                color: #555;
+            }
+
+            .about-image {
+                text-align: center;
+            }
+
+            .avatar {
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #66bcea 0%, #0c41f5 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 6rem;
+                color: white;
+                margin: 0 auto;
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            }
+
+            .experience-timeline {
+                margin-bottom: 2rem;
+            }
+
+            .education-timeline {
+                margin-bottom: 2rem;
+            }
+
+            .experience-item {
+                background: #f8f9fa;
+                padding: 2rem;
+                border-radius: 15px;
+                margin-bottom: 2rem;
+                border-left: 4px solid #66bcea;
+                transition: all 0.3s ease;
+            }
+
+            .education-item {
+                width: 100%;
+                background: #b5d9ec;
+                padding: 2rem;
+                border-radius: 15px;
+                margin-bottom: 2rem;
+                border-left: 4px solid #004af4;
+                transition: all 0.3s ease;
+            }
+
+            .experience-item:hover {
+                transform: translateX(10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            .education-item:hover {
+                transform: translateX(10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .experience-item h3 {
+                color: #0c41f5;
+                font-size: 1.5rem;
+            }
+
+            .education-item h3 {
+                color: #0c41f5;
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .experience-item .company {
+                color: #66bcea;
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+
+            .education-item .institute {
+                color: #fff;
+                font-weight: 600;
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .experience-item .period {
+                color: #999;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .education-item .period {
+                color: #fff;
+                opacity: 0.8;
+                font-size: 0.9rem;
+            }
+
+            .experience-item ul {
+                margin-left: 1.5rem;
+                color: #555;
+            }
+
+            .education-item p {
+                color: #fff;
+            }
+
+            .experience-item ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .skill-card {
+                background: linear-gradient(135deg, #66bcea 0%, #0c41f5 100%);
+                padding: 1rem;
+                border-radius: 10px;
+                text-align: center;
+                color: white;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+                cursor: pointer;
+            }
+
+            .skill-card:hover {
+                box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+            }
+
+            .skill-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .phone-mockup {
+                max-width: 400px;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .phone-screen {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .screenshot-slider {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+
+            .screenshot-slider img {
+                min-width: 100%;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+
+            .slider-controls {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .slider-btn {
+                background: #66bcea;
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .slider-btn:hover {
+                background: #0c41f5;
+                transform: scale(1.1);
+            }
+
+            .slider-dots {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #ddd;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .dot.active {
+                background: #66bcea;
+                width: 30px;
+                border-radius: 5px;
+            }
+
+            .project-info {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.8rem;
+                color: #0c41f5;
+                margin-bottom: 1rem;
+            }
+
+            .project-info p {
+                color: #666;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .project-container {
+                margin-bottom: 3rem;
+            }
+
+            .project-card-horizontal {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 2rem;
+                align-items: center;
+                border: 2px solid #e9ecef;
+                transition: all 0.3s ease;
+            }
+
+            .project-card-horizontal:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .project-image-container {
+                width: 100%;
+                height: 300px;
+                background: #e9ecef;
+                border-radius: 10px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .project-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .project-details h3 {
+                color: #0c41f5;
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-details p {
+                color: #666;
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+            }
+
+            .project-card-full {
+                background: #f8f9fa;
+                border-radius: 15px;
+                padding: 2.5rem;
+                border: 2px solid #e9ecef;
+                transition: all 0.3s ease;
+            }
+
+            .project-card-full:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .project-card-full h3 {
+                color: #0c41f5;
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-card-full p {
+                color: #666;
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+            }
+
+            .project-links {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .project-link {
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, #66bcea 0%, #0c41f5 100%);
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+            .project-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            }
+
+            .tech-tags {
+                display: flex;
+                gap: 0.25rem 0.5rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .tech-tag {
+                background: linear-gradient(135deg, #66bcea 0%, #0c41f5 100%);
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 0.5rem;
+                margin-top: 2rem;
+            }
+
+            .contact-item {
+                background: #eceff2;
+                padding: 0.5rem;
+                border-radius: 10px;
+                text-align: center;
+                transition: all 0.3s ease;
+                border: 2px solid #e9ecef;
+            }
+
+            .contact-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+                border-color: #66bcea;
+                background: #b9dbed;
+            }
+
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+
+            .contact-item h3 {
+                color: #0c41f5;
+                margin-bottom: 0.5rem;
+                font-size: 1.3rem;
+            }
+
+            .contact-item a {
+                color: #555;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                word-break: break-word;
+            }
+
+            .contact-item a:hover {
+                color: #66bcea;
+            }
+
+            .contact-item p {
+                color: #555;
+                font-weight: 500;
+            }
+
+            footer {
+                background: #333;
+                color: white;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 768px) {
+                #hero h1 {
+                    font-size: 2.5rem;
+                }
+
+                #hero .tagline {
+                    font-size: 1.2rem;
+                }
+
+                #hero .hero-content {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                #hero .hero-text {
+                    text-align: center;
+                }
+
+                #hero .hero-text h1 {
+                    text-align: center;
+                }
+
+                #hero .hero-text p {
+                    text-align: left;
+                }
+
+                #hero .profile-image-container {
+                    margin: 0 auto;
+                }
+
+                .about-content {
+                    grid-template-columns: 1fr;
+                }
+
+                nav ul {
+                    gap: 1rem;
+                    font-size: 0.9rem;
+                }
+
+                section {
+                    padding: 5rem 1rem 2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#hero">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile-image-container">
+                        <img src="profile.png" alt="Prodromos Sarakinou" class="profile-image" />
+                    </div>
+                    <div class="hero-text">
+                        <h1>Prodromos Sarakinou</h1>
+                        <h3 class="tagline">Software Engineer | Flutter & Next.js Developer</h3>
+                    </div>
+                </div>
+                <div>
+                    <h1>Who am I?</h1>
+                    <p>
+                        I am <span id="age"></span> years old and I have been working in Software Development for the
+                        last <span id="experienceInYears"></span> years. I'm a passionate Software Engineer specializing
+                        in building, developing, and maintaining high-performance applications using multiple
+                        Frameworks.
+                    </p>
+                    <p>
+                        With expertise in cross-platform mobile development and modern web technologies, I create
+                        seamless user experiences that make an impact.
+                    </p>
+                    <p>
+                        I love tackling complex problems and turning ideas into reality through clean, efficient code.
+                    </p>
+                    <a href="#contact" class="cta-button">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+        <section id="education">
+            <div class="container content-section">
+                <h2>Education</h2>
+                <div class="experience-timeline">
+                    <h3>General</h3>
+                    <div class="education-item">
+                        <h3>Applied Informatics</h3>
+                        <div class="institute">University Of Macedonia</div>
+                        <div class="period">Sep 2015 - Sep 2021</div>
+                        <p>Bachelor's Degree</p>
+                    </div>
+                    <h3>Licenses & Certificates</h3>
+                    <div class="education-item">
+                        <h3>Learning Next.js</h3>
+                        <div class="institute">LinkedIn</div>
+                        <div class="period">Issued Oct 2024</div>
+                        <a
+                            href="https://www.linkedin.com/learning/certificates/df38879af5a0d5d259249300c57050c675efa10431517205fe1ebcd6d6cd992f"
+                            target="_blank"
+                            class="show-creds-button"
+                            >Show credential</a
+                        >
+                    </div>
+                    <div class="education-item">
+                        <h3>Flutter Global Summit 23</h3>
+                        <div class="institute">Geekle.us</div>
+                        <div class="period">Issued Jan 2023</div>
+                        <a
+                            href="https://certificate.givemycertificate.com/c/ce160c99-5c71-4f63-88d8-3388354bbf70"
+                            target="_blank"
+                            class="show-creds-button"
+                            >Show credential</a
+                        >
+                    </div>
+                    <div class="education-item">
+                        <h3>Certificate of the proficiency in English</h3>
+                        <div class="institute">University of Michigan</div>
+                        <div class="period">Issued Jun 2021</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container content-section">
+                <h2>Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <h3>Next JS Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">March 2024 - Present</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next JS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Azure Dev Ops</span>
+                            <span class="tech-tag">Typescript</span>
+                            <span class="tech-tag">Javascript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Rest APIs</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Create/Develop and maintain web applications written in NextJS framework</li>
+                            <li>Collaborate with backend developers to ensure a high performance product</li>
+                            <li>
+                                Ensure accessibility, performance, and responsivenesss across different browsers and
+                                views
+                            </li>
+                            <li>Configure major functionalities such as Authentication/Client integration, etc...</li>
+                            <li>
+                                Design major aspects of the architecture of an application such as major-components,
+                                routing, UI & UX, middleware, contexts, state-management etc..
+                            </li>
+                            <li>
+                                Proper implementation of third party libraries such as next-auth, rsuite, radixui,
+                                axios, etc..
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Flutter Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">May 2020 - Present</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter Framework</span>
+                            <span class="tech-tag">Dart Programming Language</span>
+                            <span class="tech-tag">Jenkins CLI</span>
+                            <span class="tech-tag">Rest APIs</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Create/Develop and maintain mobile applications written in Flutter framework</li>
+                            <li>Collaborate with backend developers to ensure a high performance product</li>
+                            <li>
+                                Research to find out the finest and most efficient techniques for the deliverable (for
+                                state-management, routing, testing, communication with API)
+                            </li>
+                            <li>Use tools such as GetX, BloC, Go Router, Provider, Riverpod, etc...</li>
+                            <li>Design code core architecture</li>
+                            <li>Write unit tests throughout the applications' logic functionalities</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Military Service</h3>
+                        <div class="company">Hellenic Army</div>
+                        <div class="period">May 2023 - Feb 2024</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Software Engineering</span>
+                            <span class="tech-tag">Team Leadership</span>
+                            <span class="tech-tag">Recruitement</span>
+                            <span class="tech-tag">General Management</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>
+                                Developed programs to automate daily administrative processes, improving efficiency
+                                within the unit. Additionally, created an application to enhance camp security by
+                                monitoring and controlling entry and exit (Utilizing my knowledge in Software
+                                Engineering).
+                            </li>
+                            <li>
+                                Unit Duty Sergeant (Λ.Υ.Λ.): Responsible for ensuring the smooth operation and
+                                discipline of the unit maintaining cleanliness in the barracks, and assigning daily
+                                duties to soldiers.
+                            </li>
+                            <li>
+                                Oversaw the registration of new members, managed soldier and officer transfers, and
+                                handled reassignments and deployments within the unit.
+                            </li>
+                            <li>
+                                Managed staff needs, including leave requests, sick leave, and medical issues within the
+                                unit.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Android Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">Jul 2019 - Jul 2020</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java & Kotlin </span>
+                            <span class="tech-tag">MVVM Design Pattern</span>
+                            <span class="tech-tag">Retrofit</span>
+                            <span class="tech-tag">Dagger</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Maintain mobile applications written in Android Native Framework with Java & Kotlin</li>
+                            <li>
+                                Scale up applications by using the latest trending libraries (Retrofit, Dagger, Jackson)
+                            </li>
+                            <li>
+                                Work closely with product, design, and backend to ensure seamless integration and
+                                clarity
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container content-section">
+                <h2>Hard Skills</h2>
+                <br />
+                <h3>Frameworks</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Flutter</h3>
+                        <p>Cross platform framework for building natively compiled multi-platform applications</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Next.js</h3>
+                        <p>Modern React framework for production-grade web applications</p>
+                    </div>
+                </div>
+                <br />
+                <h3>Programming Languages & Technologies</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>React</h3>
+                        <p>Javascript Library</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Dart</h3>
+                        <p>Programming language used primarily in Flutter</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>JavaScript</h3>
+                        <p>Programming language for Web Applications</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>TypeScript</h3>
+                        <p>Modern web development language with type safety (based on JavaScript)</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Java</h3>
+                        <p>#1 Programming Language</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section id="experience">
+            <div class="container content-section">
+                <h2>Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <h3>Next JS Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">March 2024 - Present</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Next JS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Azure Dev Ops</span>
+                            <span class="tech-tag">Typescript</span>
+                            <span class="tech-tag">Javascript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Rest APIs</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Create/Develop and maintain web applications written in NextJS framework</li>
+                            <li>Collaborate with backend developers to ensure a high performance product</li>
+                            <li>
+                                Ensure accessibility, performance, and responsivenesss across different browsers and
+                                views
+                            </li>
+                            <li>Configure major functionalities such as Authentication/Client integration, etc...</li>
+                            <li>
+                                Design major aspects of the architecture of an application such as major-components,
+                                routing, UI & UX, middleware, contexts, state-management etc..
+                            </li>
+                            <li>
+                                Proper implementation of third party libraries such as next-auth, rsuite, radixui,
+                                axios, etc..
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Flutter Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">May 2020 - Present</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter Framework</span>
+                            <span class="tech-tag">Dart Programming Language</span>
+                            <span class="tech-tag">Jenkins CLI</span>
+                            <span class="tech-tag">Rest APIs</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Create/Develop and maintain mobile applications written in Flutter framework</li>
+                            <li>Collaborate with backend developers to ensure a high performance product</li>
+                            <li>
+                                Research to find out the finest and most efficient techniques for the deliverable (for
+                                state-management, routing, testing, communication with API)
+                            </li>
+                            <li>Use tools such as GetX, BloC, Go Router, Provider, Riverpod, etc...</li>
+                            <li>Design code core architecture</li>
+                            <li>Write unit tests throughout the applications' logic functionalities</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3>Military Service</h3>
+                        <div class="company">Hellenic Army</div>
+                        <div class="period">May 2023 - Feb 2024</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Software Engineering</span>
+                            <span class="tech-tag">Team Leadership</span>
+                            <span class="tech-tag">Recruitement</span>
+                            <span class="tech-tag">General Management</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>
+                                Developed programs to automate daily administrative processes, improving efficiency
+                                within the unit. Additionally, created an application to enhance camp security by
+                                monitoring and controlling entry and exit (Utilizing my knowledge in Software
+                                Engineering).
+                            </li>
+                            <li>
+                                Unit Duty Sergeant (Λ.Υ.Λ.): Responsible for ensuring the smooth operation and
+                                discipline of the unit maintaining cleanliness in the barracks, and assigning daily
+                                duties to soldiers.
+                            </li>
+                            <li>
+                                Oversaw the registration of new members, managed soldier and officer transfers, and
+                                handled reassignments and deployments within the unit.
+                            </li>
+                            <li>
+                                Managed staff needs, including leave requests, sick leave, and medical issues within the
+                                unit.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Android Developer</h3>
+                        <div class="company">Gnomon Informatics SA</div>
+                        <div class="period">Jul 2019 - Jul 2020</div>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java & Kotlin </span>
+                            <span class="tech-tag">MVVM Design Pattern</span>
+                            <span class="tech-tag">Retrofit</span>
+                            <span class="tech-tag">Dagger</span>
+                        </div>
+                        <br />
+                        <ul>
+                            <li>Maintain mobile applications written in Android Native Framework with Java & Kotlin</li>
+                            <li>
+                                Scale up applications by using the latest trending libraries (Retrofit, Dagger, Jackson)
+                            </li>
+                            <li>
+                                Work closely with product, design, and backend to ensure seamless integration and
+                                clarity
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container content-section">
+                <h2>Hard Skills</h2>
+                <br />
+                <h3>Frameworks</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Flutter</h3>
+                        <p>Cross platform framework for building natively compiled multi-platform applications</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Next.js</h3>
+                        <p>Modern React framework for production-grade web applications</p>
+                    </div>
+                </div>
+                <br />
+                <h3>Programming Languages & Technologies</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>React</h3>
+                        <p>Javascript Library</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Dart</h3>
+                        <p>Programming language used primarily in Flutter</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>JavaScript</h3>
+                        <p>Programming language for Web Applications</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>TypeScript</h3>
+                        <p>Modern web development language with type safety (based on JavaScript)</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Java</h3>
+                        <p>#1 Programming Language</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container content-section">
+                <h2>Projects</h2>
+
+                <!-- Project 1: PDA -->
+                <div class="project-container">
+                    <div class="project-info">
+                        <h3>PDA - Mobile Application</h3>
+                        <p>A comprehensive mobile application built with Flutter for seamless user experience</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Mobile Development</span>
+                            <span class="tech-tag">Firebase Firestore</span>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screenshot-slider" id="slider1">
+                                <img src="pda/splash-screen.png" alt="Splash Screen" />
+                                <img src="pda/login-screen.png" alt="Login Screen" />
+                                <img src="pda/home-screen.png" alt="Home Screen" />
+                                <img src="pda/menu-screen.png" alt="Menu Screen" />
+                                <img src="pda/order-menu-tab.png" alt="Order Menu Tab" />
+                                <img src="pda/order-tab.png" alt="Order Tab" />
+                                <img src="pda/orders-screen.png" alt="Orders Screen" />
+                                <img src="pda/manage-product-screen.png" alt="Manage Product Screen" />
+                                <img src="pda/settings-screen.png" alt="Settings Screen" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="prevSlide(0)">‹</button>
+                        <button class="slider-btn" onclick="nextSlide(0)">›</button>
+                    </div>
+                    <div class="slider-dots" id="dots1"></div>
+                </div>
+
+                <!-- Project 2: Template -->
+                <div class="project-container" style="margin-top: 4rem">
+                    <div class="project-info">
+                        <h3>Your-Notes</h3>
+                        <p>An applicationand easy.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter Framework</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase Firestore</span>
+                            <span class="tech-tag">Local Database</span>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screenshot-slider" id="slider2">
+                                <img src="your-notes/landing-page-no-notes.png" alt="Screenshot 1" />
+                                <img src="your-notes/landing-page.png" alt="Screenshot 2" />
+                                <img src="your-notes/splash-screen.png" alt="Screenshot 3" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="prevSlide(1)">‹</button>
+                        <button class="slider-btn" onclick="nextSlide(1)">›</button>
+                    </div>
+                    <div class="slider-dots" id="dots2"></div>
+                </div>
+
+                <!-- Project 3: Template -->
+                <div class="project-container" style="margin-top: 4rem">
+                    <div class="project-info">
+                        <h3>Gatekeeper-KERVEROS</h3>
+                        <p>
+                            Detailed description of your project. What technologies did you use? What challenges did you
+                            overcome? What was the impact?
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Flutter Desktop</span>
+                            <span class="tech-tag">Local Database</span>
+                        </div>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="screenshot-slider" id="slider3">
+                                <img src="Gatekeeper-Kerveros/home.png" class="desktop" alt="Screenshot 1" />
+                                <img src="Gatekeeper-Kerveros/settings.png" alt="Screenshot 2" />
+                                <img src="Gatekeeper-Kerveros/create-user.png" alt="Screenshot 3" />
+                                <img src="Gatekeeper-Kerveros/users-list.png" alt="Screenshot 4" />
+                                <img src="Gatekeeper-Kerveros/automated-printed-card.png" alt="Screenshot 5" />
+                                <img src="Gatekeeper-Kerveros/home-screen-mobile.png" alt="Screenshot 3" />
+                                <img src="Gatekeeper-Kerveros/settings-mobile.png" alt="Screenshot 3" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="prevSlide(2)">‹</button>
+                        <button class="slider-btn" onclick="nextSlide(2)">›</button>
+                    </div>
+                    <div class="slider-dots" id="dots3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container content-section">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <a href="mailto:pro.sarakinou@gmail.com">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <h3>Email</h3>
+                            <p>pro.sarakinou@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="tel:+306984245712">
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <h3>Mobile</h3>
+                            <p>+30 6984 245 712</p>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/prodromossarakinou-1997/" target="_blank">
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <h3>LinkedIn</h3>
+                            <p>View Profile</p>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/306984245712" target="_blank">
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <h3>WhatsApp</h3>
+                            <p>Send Message</p>
+                        </div>
+                    </a>
+                    <a href="viber://chat?number=306984245712" target="_blank">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <h3>Viber</h3>
+                            <p>Chat on Viber</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Prodromos. All rights reserved.</p>
+        </footer>
+
+        <script>
+            // Multiple sliders support
+            const sliders = [
+                { slider: document.getElementById("slider1"), dots: document.getElementById("dots1"), current: 0 },
+                { slider: document.getElementById("slider2"), dots: document.getElementById("dots2"), current: 0 },
+                { slider: document.getElementById("slider3"), dots: document.getElementById("dots3"), current: 0 }
+            ];
+
+            // Initialize all sliders
+            sliders.forEach((sliderObj, index) => {
+                if (sliderObj.slider && sliderObj.dots) {
+                    const slides = sliderObj.slider.querySelectorAll("img");
+                    const totalSlides = slides.length;
+
+                    // Create dots for this slider
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement("div");
+                        dot.className = "dot";
+                        if (i === 0) dot.classList.add("active");
+                        dot.onclick = () => goToSlide(index, i);
+                        sliderObj.dots.appendChild(dot);
+                    }
+                }
+            });
+
+            function updateSlider(sliderIndex) {
+                const sliderObj = sliders[sliderIndex];
+                if (!sliderObj.slider) return;
+
+                const slides = sliderObj.slider.querySelectorAll("img");
+                const totalSlides = slides.length;
+
+                sliderObj.slider.style.transform = `translateX(-${sliderObj.current * 100}%)`;
+                sliderObj.dots.querySelectorAll(".dot").forEach((dot, index) => {
+                    dot.classList.toggle("active", index === sliderObj.current);
+                });
+            }
+
+            function nextSlide(sliderIndex) {
+                const sliderObj = sliders[sliderIndex];
+                if (!sliderObj.slider) return;
+
+                const slides = sliderObj.slider.querySelectorAll("img");
+                const totalSlides = slides.length;
+                sliderObj.current = (sliderObj.current + 1) % totalSlides;
+                updateSlider(sliderIndex);
+            }
+
+            function prevSlide(sliderIndex) {
+                const sliderObj = sliders[sliderIndex];
+                if (!sliderObj.slider) return;
+
+                const slides = sliderObj.slider.querySelectorAll("img");
+                const totalSlides = slides.length;
+                sliderObj.current = (sliderObj.current - 1 + totalSlides) % totalSlides;
+                updateSlider(sliderIndex);
+            }
+
+            function goToSlide(sliderIndex, slideIndex) {
+                sliders[sliderIndex].current = slideIndex;
+                updateSlider(sliderIndex);
+            }
+
+            // Auto-advance first slider only
+            setInterval(() => nextSlide(0), 4000);
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll effect
+            window.addEventListener("scroll", () => {
+                const navbar = document.getElementById("navbar");
+                if (window.scrollY > 100) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -100px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".skill-card, .experience-item").forEach((el) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px)";
+                el.style.transition = "all 0.6s ease";
+                observer.observe(el);
+            });
+        </script>
+        <script>
+            function calculateDifferenceInYears(day, month, year) {
+                const today = new Date();
+                const otherDay = new Date(year, month - 1, day); // month-1 γιατί JS months είναι 0-11
+                let different = today.getFullYear() - otherDay.getFullYear();
+                // αν η φετινή ημερομηνία είναι πριν τα γενέθλια, αφαιρούμε 1
+                const monthDiff = today.getMonth() - otherDay.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < otherDay.getDate())) {
+                    different--;
+                }
+                return different;
+            }
+            document.getElementById("age").textContent = calculateDifferenceInYears(24, 3, 1997);
+            document.getElementById("experienceInYears").textContent = calculateDifferenceInYears(29, 7, 2019);
+        </script>
+    </body>
+</html>
