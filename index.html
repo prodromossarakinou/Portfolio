@@ -104,13 +104,13 @@
                 align-items: flex-start;
                 margin-top: 2rem;
             }
-   
+
             #hero .profile-image-container {
                 width: 300px;
                 height: 300px;
                 border-radius: 20px;
                 overflow: hidden;
-                box-shadow: 0 20px 60px rgba(0, 0, .4, 0.5);
+                box-shadow: 0 20px 60px rgba(0, 0, 0.4, 0.5);
                 animation: fadeInUp 1s ease;
             }
 
@@ -342,29 +342,45 @@
                 font-size: 1.25rem;
             }
 
-            .phone-mockup {
-                max-width: 400px;
-                margin: 0 auto;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .phone-screen {
-                width: 100%;
-                position: relative;
-                overflow: hidden;
-            }
-
             .screenshot-slider {
                 display: flex;
                 transition: transform 0.5s ease;
+                width: 100%;
+            }
+
+            .slide {
+                flex: 0 0 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .screenshot-slider img {
-                min-width: 100%;
-                height: auto;
-                object-fit: contain;
                 display: block;
+                margin: 0 auto;
+                height: auto;
+                max-width: 100%;
+            }
+
+            /* Ειδικά μεγέθη mockup */
+            .phone-screen {
+                width: 360px;
+            }
+
+            .tablet-screen {
+                width: 800px;
+            }
+
+            .desktop-screen {
+                width: 1000px;
+            }
+
+            .mockup {
+                width: 100%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .slider-controls {
@@ -424,7 +440,12 @@
             .project-info h3 {
                 font-size: 1.8rem;
                 color: #0c41f5;
-                margin-bottom: 1rem;
+            }
+
+            .project-info h4 {
+                font-size: 1.3rem;
+                color: #000;
+                margin-bottom: 0.5rem;
             }
 
             .project-info p {
@@ -433,8 +454,13 @@
                 margin-bottom: 1.5rem;
             }
 
+            .project-info strong {
+                color: #000;
+                font-size: 1.05rem;
+            }
+
             .project-container {
-                margin-bottom: 3rem;
+                margin-bottom: 8rem;
             }
 
             .project-card-horizontal {
@@ -528,6 +554,25 @@
             .project-link:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            }
+
+            .visit-link {
+                display: inline-block;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-weight: 600;
+                color: #fff;
+                border-radius: 25px;
+                padding: 10px 30px;
+                background: linear-gradient(135deg, #efb878 0%, #f56f0c 100%);
+                text-decoration: none;
+                transition: 0.2s;
+            }
+
+            .visit-link:hover {
+                color: #fff;
+                background: linear-gradient(135deg, #efb878 40%, #f56f0c 100%);
+                text-decoration: underline;
             }
 
             .tech-tags {
@@ -685,17 +730,22 @@
                 <div>
                     <h1>Who am I?</h1>
                     <p>
-                        I am <span id="age"></span> years old and I have been working in Software Development for the
-                        last <span id="experienceInYears"></span> years. I'm a passionate Software Engineer specializing
-                        in building, developing, and maintaining high-performance applications using multiple
-                        Frameworks.
+                        Hey, I am Prodromos, and I have been working in Software Development for the past
+                        <span id="experienceInYears"></span> years. I’m a passionate Software Engineer with extensive
+                        experience in designing, developing, and maintaining high-performance applications across
+                        multiple frameworks.
                     </p>
                     <p>
-                        With expertise in cross-platform mobile development and modern web technologies, I create
-                        seamless user experiences that make an impact.
+                        Over the years, I’ve specialized in
+                        <strong>cross-platform mobile development with Flutter</strong>
+                        and
+                        <strong>modern web technologies such as Next.js</strong>
+                        (the absolute React framework), building products that combine performance, scalability, and
+                        clean design.
                     </p>
                     <p>
-                        I love tackling complex problems and turning ideas into reality through clean, efficient code.
+                        I love tackling complex challenges, optimizing code for real-world efficiency, and transforming
+                        ideas into seamless user experiences that make a lasting impact.
                     </p>
                     <a href="#contact" class="cta-button">Get In Touch</a>
                 </div>
@@ -884,246 +934,166 @@
                 <div class="skills-grid">
                     <div class="skill-card">
                         <h3>React</h3>
-                        <p>Javascript Library</p>
+                        <p>JavaScript library for building interactive user interfaces</p>
                     </div>
                     <div class="skill-card">
                         <h3>Dart</h3>
-                        <p>Programming language used primarily in Flutter</p>
+                        <p>Programming language used for creating cross-platform mobile and web apps</p>
                     </div>
                     <div class="skill-card">
                         <h3>JavaScript</h3>
-                        <p>Programming language for Web Applications</p>
+                        <p>Core programming language for dynamic and responsive web applications</p>
                     </div>
                     <div class="skill-card">
                         <h3>TypeScript</h3>
-                        <p>Modern web development language with type safety (based on JavaScript)</p>
+                        <p>Typed superset of JavaScript for scalable and maintainable code</p>
                     </div>
                     <div class="skill-card">
                         <h3>Java</h3>
-                        <p>#1 Programming Language</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-                <section id="experience">
-            <div class="container content-section">
-                <h2>Experience</h2>
-                <div class="experience-timeline">
-                    <div class="experience-item">
-                        <h3>Next JS Developer</h3>
-                        <div class="company">Gnomon Informatics SA</div>
-                        <div class="period">March 2024 - Present</div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Next JS</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Azure Dev Ops</span>
-                            <span class="tech-tag">Typescript</span>
-                            <span class="tech-tag">Javascript</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                            <span class="tech-tag">Rest APIs</span>
-                        </div>
-                        <br />
-                        <ul>
-                            <li>Create/Develop and maintain web applications written in NextJS framework</li>
-                            <li>Collaborate with backend developers to ensure a high performance product</li>
-                            <li>
-                                Ensure accessibility, performance, and responsivenesss across different browsers and
-                                views
-                            </li>
-                            <li>Configure major functionalities such as Authentication/Client integration, etc...</li>
-                            <li>
-                                Design major aspects of the architecture of an application such as major-components,
-                                routing, UI & UX, middleware, contexts, state-management etc..
-                            </li>
-                            <li>
-                                Proper implementation of third party libraries such as next-auth, rsuite, radixui,
-                                axios, etc..
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="experience-item">
-                        <h3>Flutter Developer</h3>
-                        <div class="company">Gnomon Informatics SA</div>
-                        <div class="period">May 2020 - Present</div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Flutter Framework</span>
-                            <span class="tech-tag">Dart Programming Language</span>
-                            <span class="tech-tag">Jenkins CLI</span>
-                            <span class="tech-tag">Rest APIs</span>
-                        </div>
-                        <br />
-                        <ul>
-                            <li>Create/Develop and maintain mobile applications written in Flutter framework</li>
-                            <li>Collaborate with backend developers to ensure a high performance product</li>
-                            <li>
-                                Research to find out the finest and most efficient techniques for the deliverable (for
-                                state-management, routing, testing, communication with API)
-                            </li>
-                            <li>Use tools such as GetX, BloC, Go Router, Provider, Riverpod, etc...</li>
-                            <li>Design code core architecture</li>
-                            <li>Write unit tests throughout the applications' logic functionalities</li>
-                        </ul>
-                    </div>
-
-                    <div class="experience-item">
-                        <h3>Military Service</h3>
-                        <div class="company">Hellenic Army</div>
-                        <div class="period">May 2023 - Feb 2024</div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Software Engineering</span>
-                            <span class="tech-tag">Team Leadership</span>
-                            <span class="tech-tag">Recruitement</span>
-                            <span class="tech-tag">General Management</span>
-                        </div>
-                        <br />
-                        <ul>
-                            <li>
-                                Developed programs to automate daily administrative processes, improving efficiency
-                                within the unit. Additionally, created an application to enhance camp security by
-                                monitoring and controlling entry and exit (Utilizing my knowledge in Software
-                                Engineering).
-                            </li>
-                            <li>
-                                Unit Duty Sergeant (Λ.Υ.Λ.): Responsible for ensuring the smooth operation and
-                                discipline of the unit maintaining cleanliness in the barracks, and assigning daily
-                                duties to soldiers.
-                            </li>
-                            <li>
-                                Oversaw the registration of new members, managed soldier and officer transfers, and
-                                handled reassignments and deployments within the unit.
-                            </li>
-                            <li>
-                                Managed staff needs, including leave requests, sick leave, and medical issues within the
-                                unit.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Android Developer</h3>
-                        <div class="company">Gnomon Informatics SA</div>
-                        <div class="period">Jul 2019 - Jul 2020</div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Java & Kotlin </span>
-                            <span class="tech-tag">MVVM Design Pattern</span>
-                            <span class="tech-tag">Retrofit</span>
-                            <span class="tech-tag">Dagger</span>
-                        </div>
-                        <br />
-                        <ul>
-                            <li>Maintain mobile applications written in Android Native Framework with Java & Kotlin</li>
-                            <li>
-                                Scale up applications by using the latest trending libraries (Retrofit, Dagger, Jackson)
-                            </li>
-                            <li>
-                                Work closely with product, design, and backend to ensure seamless integration and
-                                clarity
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <div class="container content-section">
-                <h2>Hard Skills</h2>
-                <br />
-                <h3>Frameworks</h3>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>Flutter</h3>
-                        <p>Cross platform framework for building natively compiled multi-platform applications</p>
+                        <p>Object-oriented programming language for versatile software solutions</p>
                     </div>
                     <div class="skill-card">
-                        <h3>Next.js</h3>
-                        <p>Modern React framework for production-grade web applications</p>
+                        <h3>Python</h3>
+                        <p>High-level programming language known for its clarity and versatility</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Jenkins</h3>
+                        <p>Tool for automating repetitive tasks</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Firebase</h3>
+                        <p>Google's cloud based platform</p>
                     </div>
                 </div>
                 <br />
-                <h3>Programming Languages & Technologies</h3>
+                <h2>Soft Skills</h2>
+                <br />
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <h3>React</h3>
-                        <p>Javascript Library</p>
+                        <h3>Problem-solving & critical thinking</h3>
                     </div>
                     <div class="skill-card">
-                        <h3>Dart</h3>
-                        <p>Programming language used primarily in Flutter</p>
+                        <h3>Team Leadership</h3>
                     </div>
                     <div class="skill-card">
-                        <h3>JavaScript</h3>
-                        <p>Programming language for Web Applications</p>
+                        <h3>Effective communication and interpersonal skills</h3>
                     </div>
                     <div class="skill-card">
-                        <h3>TypeScript</h3>
-                        <p>Modern web development language with type safety (based on JavaScript)</p>
+                        <h3>Strong teamwork & collaboration</h3>
                     </div>
                     <div class="skill-card">
-                        <h3>Java</h3>
-                        <p>#1 Programming Language</p>
+                        <h3>Adaptability and willingness to learn new technologies</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Continuous learning and improvement mindset</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Resilience and ability to work under pressure</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Attention to detail and precision</h3>
                     </div>
                 </div>
             </div>
         </section>
-
         <section id="projects">
             <div class="container content-section">
                 <h2>Projects</h2>
-
-                <!-- Project 1: PDA -->
                 <div class="project-container">
                     <div class="project-info">
                         <h3>PDA - Mobile Application</h3>
-                        <p>A comprehensive mobile application built with Flutter for seamless user experience</p>
+                        <h4>Role: Sole Developer & Architect</h4>
+                        <p>
+                            A fully functional mobile application built with <strong>Flutter</strong> and
+                            <strong>Firebase Firestore</strong>, designed to manage real-time orders in a retail
+                            environment. From initial design to live deployment in a store, I handled the entire
+                            development process — from UI/UX and data architecture to network communication and
+                            performance optimization. The app ensures a smooth, reliable, and intuitive user experience
+                            tailored for day-to-day business operations.
+                        </p>
                         <div class="tech-tags">
                             <span class="tech-tag">Flutter</span>
                             <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Google Sign-in</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Feature Based Architecture</span>
                             <span class="tech-tag">Mobile Development</span>
                             <span class="tech-tag">Firebase Firestore</span>
+                            <span class="tech-tag">Riverpod</span>
+                            <span class="tech-tag">Go Router</span>
                         </div>
                     </div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="screenshot-slider" id="slider1">
-                                <img src="pda/splash-screen.png" alt="Splash Screen" />
-                                <img src="pda/login-screen.png" alt="Login Screen" />
-                                <img src="pda/home-screen.png" alt="Home Screen" />
-                                <img src="pda/menu-screen.png" alt="Menu Screen" />
-                                <img src="pda/order-menu-tab.png" alt="Order Menu Tab" />
-                                <img src="pda/order-tab.png" alt="Order Tab" />
-                                <img src="pda/orders-screen.png" alt="Orders Screen" />
-                                <img src="pda/manage-product-screen.png" alt="Manage Product Screen" />
-                                <img src="pda/settings-screen.png" alt="Settings Screen" />
+                    <div class="mockup">
+                        <div class="screenshot-slider" id="PdaAppSlider">
+                            <div class="slide">
+                                <img src="pda/splash-screen.png" class="phone-screen" alt="Splash Screen" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/login-screen.png" class="phone-screen" alt="Login Screen" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/home-screen.png" class="phone-screen" alt="Home Screen" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/menu-screen.png" class="phone-screen" alt="Menu Screen" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/order-menu-tab.png" class="phone-screen" alt="Order Menu Tab" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/order-tab.png" class="phone-screen" alt="Order Tab" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/orders-screen.png" class="phone-screen" alt="Orders Screen" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="pda/manage-product-screen.png"
+                                    class="phone-screen"
+                                    alt="Manage Product Screen" />
+                            </div>
+                            <div class="slide">
+                                <img src="pda/settings-screen.png" class="phone-screen" alt="Settings Screen" />
                             </div>
                         </div>
                     </div>
+
                     <div class="slider-controls">
                         <button class="slider-btn" onclick="prevSlide(0)">‹</button>
                         <button class="slider-btn" onclick="nextSlide(0)">›</button>
                     </div>
-                    <div class="slider-dots" id="dots1"></div>
+                    <div class="slider-dots" id="PdaAppDots"></div>
                 </div>
-
-                <!-- Project 2: Template -->
-                <div class="project-container" style="margin-top: 4rem">
+                <div class="project-container">
                     <div class="project-info">
-                        <h3>Your-Notes</h3>
-                        <p>An applicationand easy.</p>
+                        <h3>Digital Menu - Web Application</h3>
+                        <h4>Role: Sole Developer & Architect</h4>
+                        <p>
+                            A dynamic and responsive web application built with <strong>Next.js</strong>,
+                            <strong>Tailwind CSS</strong>, and <strong>Firebase Firestore</strong>, designed to provide
+                            customers with an interactive digital menu experience. The app dynamically fetches menu data
+                            from the <strong>PDA system</strong>, displaying only available products in real time. Users
+                            can browse items, view detailed pricing, and optionally enable an order calculator to create
+                            their own selections, viewing both per-item and total cost instantly. This project ensures a
+                            fast, modern, and seamless experience for customers while maintaining live synchronization
+                            with the restaurant’s system.
+                        </p>
+                        <a href="https://prodromos-tavern-pda.web.app" target="_blank" class="visit-link">LIVE ↗</a>
                         <div class="tech-tags">
-                            <span class="tech-tag">Flutter Framework</span>
-                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
                             <span class="tech-tag">Firebase Firestore</span>
-                            <span class="tech-tag">Local Database</span>
+                            <span class="tech-tag">Dynamic Data</span>
                         </div>
                     </div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="screenshot-slider" id="slider2">
-                                <img src="your-notes/landing-page-no-notes.png" alt="Screenshot 1" />
-                                <img src="your-notes/landing-page.png" alt="Screenshot 2" />
-                                <img src="your-notes/splash-screen.png" alt="Screenshot 3" />
+                    <div class="mockup">
+                        <div class="screenshot-slider" id="PdaMenuSlider">
+                            <div class="slide">
+                                <img src="/pda/menu-preview.png" class="tablet-screen" alt="Screenshot 1" />
+                            </div>
+                            <div class="slide">
+                                <img src="/pda/order-calculator.png" class="tablet-screen" alt="Screenshot 2" />
                             </div>
                         </div>
                     </div>
@@ -1131,34 +1101,41 @@
                         <button class="slider-btn" onclick="prevSlide(1)">‹</button>
                         <button class="slider-btn" onclick="nextSlide(1)">›</button>
                     </div>
-                    <div class="slider-dots" id="dots2"></div>
+                    <div class="slider-dots" id="PdaMenuDots"></div>
                 </div>
-
-                <!-- Project 3: Template -->
-                <div class="project-container" style="margin-top: 4rem">
+                <div class="project-container">
                     <div class="project-info">
-                        <h3>Gatekeeper-KERVEROS</h3>
+                        <h3>Your-Notes</h3>
+                        <h4>Role: Independent Developer (Self-Development Project)</h4>
                         <p>
-                            Detailed description of your project. What technologies did you use? What challenges did you
-                            overcome? What was the impact?
+                            A personal productivity app developed as a self-learning project to explore
+                            <strong>state management</strong>
+                            and <strong>data synchronization between</strong> local storage and
+                            <strong>Fireabse</strong>. It allows users to create, edit, and securely store notes, with
+                            the option to mark specific notes as <strong>private (blurred)</strong> for extra privacy.
+                            The focus was on simplicity, usability, and syncing logic between offline and online modes.
                         </p>
                         <div class="tech-tags">
-                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Flutter Framework</span>
                             <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Flutter Desktop</span>
+                            <span class="tech-tag">Firebase Firestore</span>
                             <span class="tech-tag">Local Database</span>
+                            <span class="tech-tag">Riverpod</span>
                         </div>
                     </div>
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <div class="screenshot-slider" id="slider3">
-                                <img src="Gatekeeper-Kerveros/home.png" class="desktop" alt="Screenshot 1" />
-                                <img src="Gatekeeper-Kerveros/settings.png" alt="Screenshot 2" />
-                                <img src="Gatekeeper-Kerveros/create-user.png" alt="Screenshot 3" />
-                                <img src="Gatekeeper-Kerveros/users-list.png" alt="Screenshot 4" />
-                                <img src="Gatekeeper-Kerveros/automated-printed-card.png" alt="Screenshot 5" />
-                                <img src="Gatekeeper-Kerveros/home-screen-mobile.png" alt="Screenshot 3" />
-                                <img src="Gatekeeper-Kerveros/settings-mobile.png" alt="Screenshot 3" />
+                    <div class="mockup">
+                        <div class="screenshot-slider" id="YourNotesSlider">
+                            <div class="slide">
+                                <img
+                                    src="your-notes/landing-page-no-notes.png"
+                                    class="phone-screen"
+                                    alt="Screenshot 1" />
+                            </div>
+                            <div class="slide">
+                                <img src="your-notes/landing-page.png" class="phone-screen" alt="Screenshot 2" />
+                            </div>
+                            <div class="slide">
+                                <img src="your-notes/splash-screen.png" class="phone-screen" alt="Screenshot 3" />
                             </div>
                         </div>
                     </div>
@@ -1166,7 +1143,139 @@
                         <button class="slider-btn" onclick="prevSlide(2)">‹</button>
                         <button class="slider-btn" onclick="nextSlide(2)">›</button>
                     </div>
-                    <div class="slider-dots" id="dots3"></div>
+                    <div class="slider-dots" id="YourNotesDots"></div>
+                </div>
+
+                <div class="project-container">
+                    <div class="project-info">
+                        <h3>Gatekeeper-KERVEROS</h3>
+                        <h4>Role: Sole Developer & Architect</h4>
+                        <p>
+                            Developed during my military service, <strong>Gatekeeper KERVEROS</strong> is a security
+                            control system designed to monitor entry and exit activity in military camps. It automates
+                            the process by generating and printing personalized ID cards, which are scanned upon entry
+                            or exit. The system records and visualizes all movements, providing fast access to personnel
+                            data and improving overall security and administrative efficiency. This project showcased my
+                            ability to design and implement <strong>a complete end-to-end solution</strong>, combining
+                            software engineering, process automation, and real-world reliability under restricted
+                            conditions.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Feature Based Architecture</span>
+                            <span class="tech-tag">Riverpod</span>
+                            <span class="tech-tag">Flutter Desktop</span>
+                            <span class="tech-tag">Local Database</span>
+                        </div>
+                    </div>
+                    <div class="mockup">
+                        <div class="screenshot-slider" id="GatekeeperKerverosSlider">
+                            <div class="slide">
+                                <img src="Gatekeeper-Kerveros/home.png" class="desktop-screen" alt="Home Screen" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/settings.png"
+                                    class="desktop-screen"
+                                    alt="Settings Screen" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/create-user.png"
+                                    class="desktop-screen"
+                                    alt="Create User Screen" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/users-list.png"
+                                    class="desktop-screen"
+                                    alt="Users list screen" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/automated-printed-card.png"
+                                    class="desktop-screen"
+                                    alt="Automated Printed Card " />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/home-screen-mobile.png"
+                                    class="phone-screen"
+                                    alt="Home screen mobile" />
+                            </div>
+                            <div class="slide">
+                                <img
+                                    src="Gatekeeper-Kerveros/settings-mobile.png"
+                                    class="phone-screen"
+                                    alt="Settings Screen Mobile" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="prevSlide(3)">‹</button>
+                        <button class="slider-btn" onclick="nextSlide(3)">›</button>
+                    </div>
+                    <div class="slider-dots" id="GatekeeperKerverosDots"></div>
+                </div>
+                <div class="project-container">
+                    <div class="project-info">
+                        <h3>Notebars</h3>
+                        <h4>Role: Freelance Developer</h4>
+                        <p>
+                            For six months I worked as a freelance, main and only developer on Notebars, overseeing
+                            every facet of the project — from planning and architecture to UI/UX, feature development,
+                            and deployment. I translated the vision into a polished, performance-oriented application,
+                            handling all frontend logic, state management, and integration with backend services. This
+                            role deepened my ability to build training and learning tools with real-world impact and
+                            high usability.
+                        </p>
+                        <p>
+                            Notebars is an interactive study app that transforms portions of text into memory cards
+                            called “Notebars.” Users can tap sentences or words to create visual memory keys, organize
+                            notes, and perform efficient spaced repetitions to solidify knowledge retention. The app
+                            supports importing text (books, articles, study material), and is optimized to make
+                            repetitive learning engaging, fast, and effective. Built to balance simplicity and power, it
+                            targets students, readers, and lifelong learners alike.
+                        </p>
+                        <a href="https://www.notebars.gr" target="_blank" class="visit-link">Visit Live Site</a>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Windows OS</span>
+                            <span class="tech-tag">MacOS</span>
+                            <span class="tech-tag">Google Sign In</span>
+                            <span class="tech-tag">File Importing</span>
+                            <span class="tech-tag">File Rendering</span>
+                        </div>
+                    </div>
+
+                    <div class="mockup">
+                        <div class="screenshot-slider" id="NotebarsSlider">
+                            <div class="slide">
+                                <img src="notebars/libraries.png" class="phone-screen" alt="Libraries Page" />
+                            </div>
+                            <div class="slide">
+                                <img src="notebars/book-titles.png" class="phone-screen" alt="Book Titles Page" />
+                            </div>
+                            <div class="slide">
+                                <img src="notebars/notes.png" class="phone-screen" alt="Notes View" />
+                            </div>
+                            <div class="slide">
+                                <img src="notebars/settings.png" class="phone-screen" alt="Settings Page" />
+                            </div>
+                            <div class="slide">
+                                <img src="notebars/symbols.png" class="phone-screen" alt="Symbols View" />
+                            </div>        
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="prevSlide(4)">‹</button>
+                        <button class="slider-btn" onclick="nextSlide(4)">›</button>
+                    </div>
+                    <div class="slider-dots" id="NotebarsDots"></div>
                 </div>
             </div>
         </section>
@@ -1219,20 +1328,45 @@
         </footer>
 
         <script>
-            // Multiple sliders support
             const sliders = [
-                { slider: document.getElementById("slider1"), dots: document.getElementById("dots1"), current: 0 },
-                { slider: document.getElementById("slider2"), dots: document.getElementById("dots2"), current: 0 },
-                { slider: document.getElementById("slider3"), dots: document.getElementById("dots3"), current: 0 }
+                {
+                    slider: document.getElementById("PdaAppSlider"),
+                    dots: document.getElementById("PdaAppDots"),
+                    current: 0
+                },
+                {
+                    slider: document.getElementById("PdaMenuSlider"),
+                    dots: document.getElementById("PdaMenuDots"),
+                    current: 0
+                },
+                {
+                    slider: document.getElementById("YourNotesSlider"),
+                    dots: document.getElementById("YourNotesDots"),
+                    current: 0
+                },
+                {
+                    slider: document.getElementById("GatekeeperKerverosSlider"),
+                    dots: document.getElementById("GatekeeperKerverosDots"),
+                    current: 0
+                },
+                {
+                    slider: document.getElementById("NotebarsSlider"),
+                    dots: document.getElementById("NotebarsDots"),
+                    current: 0
+                }
             ];
-
-            // Initialize all sliders
+            sliders.forEach((sliderObj) => {
+                if (sliderObj.slider) {
+                    const slides = sliderObj.slider.querySelectorAll(".slide");
+                    sliderObj.slider.style.width = `${slides.length * 100}%`;
+                }
+            });
             sliders.forEach((sliderObj, index) => {
                 if (sliderObj.slider && sliderObj.dots) {
-                    const slides = sliderObj.slider.querySelectorAll("img");
+                    const slides = sliderObj.slider.querySelectorAll(".slide");
                     const totalSlides = slides.length;
 
-                    // Create dots for this slider
+                    // Create dots
                     for (let i = 0; i < totalSlides; i++) {
                         const dot = document.createElement("div");
                         dot.className = "dot";
@@ -1247,10 +1381,11 @@
                 const sliderObj = sliders[sliderIndex];
                 if (!sliderObj.slider) return;
 
-                const slides = sliderObj.slider.querySelectorAll("img");
+                const slides = sliderObj.slider.querySelectorAll(".slide");
                 const totalSlides = slides.length;
 
                 sliderObj.slider.style.transform = `translateX(-${sliderObj.current * 100}%)`;
+
                 sliderObj.dots.querySelectorAll(".dot").forEach((dot, index) => {
                     dot.classList.toggle("active", index === sliderObj.current);
                 });
@@ -1260,8 +1395,9 @@
                 const sliderObj = sliders[sliderIndex];
                 if (!sliderObj.slider) return;
 
-                const slides = sliderObj.slider.querySelectorAll("img");
+                const slides = sliderObj.slider.querySelectorAll(".slide");
                 const totalSlides = slides.length;
+
                 sliderObj.current = (sliderObj.current + 1) % totalSlides;
                 updateSlider(sliderIndex);
             }
@@ -1270,8 +1406,9 @@
                 const sliderObj = sliders[sliderIndex];
                 if (!sliderObj.slider) return;
 
-                const slides = sliderObj.slider.querySelectorAll("img");
+                const slides = sliderObj.slider.querySelectorAll(".slide");
                 const totalSlides = slides.length;
+
                 sliderObj.current = (sliderObj.current - 1 + totalSlides) % totalSlides;
                 updateSlider(sliderIndex);
             }
